@@ -1,8 +1,6 @@
 <template>
     <div> 
-        <AddItem
-        @addItem='addItem'
-        />
+        <AddItem/>
 
         <select v-model="filter" class="selectForm">
             <option value='all'> All </option>
@@ -15,7 +13,6 @@
         <ListRender
         v-else-if="filterItem.length"
         :todos='filterItem'
-        @removeItem='removeItem'
         />
 
         <p v-else class="nothing"> Nothing... </p>
@@ -27,7 +24,7 @@
 import ListRender from '@/components/ListRender'
 import AddItem from '@/components/AddItem'
 import Loader from '@/components/Loader'
-
+import { bus } from '../main'
 
 export default {
      data() {
@@ -64,7 +61,15 @@ export default {
         
         addItem(dataPart) {
             this.todos.push(dataPart)
-        }
+        },  
+    },
+    created() {
+        bus.$on('remove', (id) => {
+            this.removeItem(id)
+        }),
+        bus.$on('addItem', (dataPart) => {
+            this.addItem(dataPart)
+        })
     },
     computed: {
         filterItem() {

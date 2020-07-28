@@ -8,6 +8,8 @@
 
 <script>
 
+import { bus } from '../main'
+
 export default {
    data() {
        return {
@@ -23,7 +25,7 @@ export default {
                    completed: false,
                }
 
-               this.$emit('addItem', newItem);
+               bus.$emit('addItem', newItem);
                this.title = ''
            }
        }
@@ -39,6 +41,7 @@ export default {
         width: 350px;
         padding: 7px;
         border-radius: 15px;
+        outline: none;
     }
 
 </style>

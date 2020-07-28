@@ -4,8 +4,6 @@
             v-for='(todo, index) of todos' :key='todo.id'
             :todo='todo'
             :index='index'
-
-            @remove='removeItem'
         />
     </div>
 </template>
@@ -18,11 +16,6 @@ export default {
     components: {
         ListItem,
     },
-    methods: {
-       removeItem(id) {
-           this.$emit('removeItem', id)
-       }
-    }
 }
 </script>
 

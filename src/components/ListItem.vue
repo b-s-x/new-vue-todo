@@ -7,17 +7,26 @@
             {{todo.title | uppercase}}
         </span>
         <button class="remove" 
-                @click="$emit('remove', todo.id)"
-            > &times; </button>
+                @click="remove"
+            > &times; 
+        </button> 
     </div>
 </template>
 
 <script>
+
+import { bus } from '../main'
+
 export default {
     props: ['todo', 'index'],
     filters: {
         uppercase(value) {
             return value.toUpperCase()
+        }
+    },
+    methods: {
+        remove() {
+            bus.$emit('remove', this.todo.id)
         }
     }
 }
