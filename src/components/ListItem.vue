@@ -1,7 +1,7 @@
 <template>
     <div>
         <span :class='{done: todo.completed}'>
-        <input type="checkbox" 
+        <input type="checkbox" class="check"
             @change='todo.completed = !todo.completed'>
             <strong> {{index + 1}} </strong>
             {{todo.title | uppercase}}
@@ -30,9 +30,11 @@ export default {
         background: black;
         border: none;
         border-radius: 50%;
+        outline: none;
     }
 
     .done {
         text-decoration: line-through;
     }
+    
 </style>
