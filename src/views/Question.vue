@@ -1,8 +1,6 @@
 <template>
-    <div class="common"> 
-        <h1>  
-            I am at Home!
-        </h1>
+    <div class="homeStyle">
+       <p> Anybody at Home? </p>
     </div>
 </template>
 
@@ -13,12 +11,12 @@ export default {
 </script>
 
 <style scoped>
-    .common {
+    .homeStyle {
         display: flex;
     }
 
-    h1 { 
-        font-size: 70px;
+    p { 
+        font-size: 45px;
         margin: auto;
         margin-top: 100px;
     }

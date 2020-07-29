@@ -1,6 +1,6 @@
 <template>
     <div> 
-        <AddItem/>
+        <AddItem class='add'/>
 
         <select v-model="filter" class="selectForm">
             <option value='all'> All </option>
@@ -91,7 +91,7 @@ export default {
 <style scoped>
 
     div {
-        margin: 10px 80px 0 80px;
+        margin: 10px 180px 0 180px;
         display: flex; 
         flex-direction: column;
     }
@@ -118,4 +118,33 @@ export default {
         outline:none;
     
     }
+
+    @media screen and (max-width: 1110px) {
+        div {
+                    margin: 10px 100px 0 100px;
+
+        }
+    }
+    @media screen and (max-width: 950px) {
+        div {
+                    margin: 10px 70px 0 70px;
+
+        }
+    } 
+    @media screen and (max-width: 650px) {
+        div {
+                    margin: 10px 40px 0 40px;
+                    min-width: 400px;
+        }
+
+        .add {
+            min-width: 400px;
+            margin-left: 40px;
+            margin-right: 30px;
+        }
+
+        .selectForm {
+            margin-left: 180px;
+        }
+    } 
 </style>

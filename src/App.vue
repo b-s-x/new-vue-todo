@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <span class="linkDecor"> 
-      <router-link to="/" class="linkHome"> Home </router-link>
-      <router-link to="/list" class="linkList"> List </router-link>
+      <router-link to="/home" class="linkHome"> Home</router-link>
+      <router-link to="/list" class="linkList"> List</router-link>
     </span>
 
     <router-view> </router-view>
@@ -29,4 +29,18 @@ export default {
     margin: auto;
     color: black
   }
+
+  @media screen and (max-width: 650px) {
+    .linkDecor {
+      margin-left: 135px;
+
+      display: inline;
+      }
+
+      .linkList, .linkHome {
+      padding: 20px;
+      margin: 20px;
+    }
+  } 
 </style>
+

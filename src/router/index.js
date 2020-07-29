@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
 import List from '@/views/List'
+import Question from '@/views/Question'
 
 Vue.use(Router)
 
@@ -10,11 +11,15 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Home,
+      component: Question,
     },
     {
       path: '/list',
       component: List
+    },
+    {
+      path: '/home',
+      component: Home,
     },
   ]
 })
