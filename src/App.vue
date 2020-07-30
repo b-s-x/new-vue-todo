@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
   .linkDecor {
-    font-size: 32px;
+    font-size: 42px;
     margin: 10px;
     padding: 10px;
     display: flex;
@@ -30,16 +30,17 @@ export default {
     color: black
   }
 
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 550px) {
     .linkDecor {
-      margin-left: 135px;
-
-      display: inline;
+      margin-left: 65px;
+      margin-right: 50px;
       }
 
-      .linkList, .linkHome {
-      padding: 20px;
-      margin: 20px;
+    .linkList, .linkHome {
+    padding: 20px;
+    }
+    .linkList {
+      margin-left: 70px;
     }
   } 
 </style>

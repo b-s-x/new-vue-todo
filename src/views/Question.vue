@@ -16,8 +16,8 @@ export default {
     }
 
     p { 
-        font-size: 45px;
+        font-size: 65px;
         margin: auto;
-        margin-top: 100px;
+        margin-top: 120px;
     }
 </style>
