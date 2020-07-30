@@ -15,8 +15,7 @@
         :todos='filterItem'
         />
 
-        <p v-else class="nothing"> Nothing... </p>
-        
+        <p v-else class="nothing"> Nothing... </p>   
     </div>
 </template>
 
@@ -29,25 +28,26 @@ import { bus } from '../main'
 export default {
      data() {
         return {
-            todos: [
-                // {id: 1, title: 'bsx', completed: false},
-                // {id: 2, title: 'xsb', completed: false},
-                // {id: 3, title: 'sxb', completed: false},
-            ],
+            todos: [],
             loading: true,
-            filter: 'all'
+            filter: 'all',
         }
     },
     mounted() {
-        fetch('https://jsonplaceholder.typicode.com/todos?_limit=3')
-            .then(response => response.json())
-            .then(json => {
-                setTimeout(() => {
-                this.todos = json
-                this.loading = false
-                }, 1000)
-               
-            })
+        if(localStorage.getItem('todos')) {
+            setTimeout(() => {
+            this.todos = JSON.parse(localStorage.getItem('todos'))
+            this.loading = false
+            }, 1000)     
+        }
+    },
+    watch: {
+        todos: {
+            handler() {
+                localStorage.setItem('todos', JSON.stringify(this.todos))
+            },
+            deep: true
+        }
     },
     components: {
         ListRender,
@@ -60,8 +60,8 @@ export default {
         },
         
         addItem(dataPart) {
-            this.todos.push(dataPart)
-        },  
+            this.todos.push(dataPart);
+        }, 
     },
     created() {
         bus.$on('remove', (id) => {
@@ -81,7 +81,6 @@ export default {
             }
             if(this.filter == 'not-completed') {
                 return this.todos.filter((elem) => !elem.completed)
-
             }
         }
     }
@@ -121,30 +120,50 @@ export default {
 
     @media screen and (max-width: 1110px) {
         div {
-                    margin: 10px 100px 0 100px;
+                    margin: 10px 140px 0 140px;
 
         }
     }
     @media screen and (max-width: 950px) {
         div {
-                    margin: 10px 70px 0 70px;
+                    margin: 10px 120px 0 120px;
 
         }
     } 
-    @media screen and (max-width: 650px) {
+
+     @media screen and (max-width: 870px) {
+        div {
+                    margin: 10px 100px 0 100px;
+                    min-width: 400px;
+        }
+     }
+     @media screen and (max-width: 800px) {
+        div {
+                    margin: 10px 70px 0 70px;
+                    min-width: 400px;
+        }
+     }
+
+     @media screen and (max-width: 690px) {
         div {
                     margin: 10px 40px 0 40px;
                     min-width: 400px;
         }
+     }
+    @media screen and (max-width: 550px) {
+        div {
+            margin: 10px 50px 0 20px;
+            min-width: 400px;
+        }
 
         .add {
             min-width: 400px;
-            margin-left: 40px;
+            margin-left: 20px;
             margin-right: 30px;
         }
 
         .selectForm {
-            margin-left: 180px;
+            margin-left: 165px;
         }
     } 
 </style>
