@@ -71,6 +71,10 @@ export default {
             this.addItem(dataPart)
         })
     },
+    beforeDestroy() {
+        bus.$off('remove');
+        bus.$off('addItem');
+    },
     computed: {
         filterItem() {
             if(this.filter == 'all') {
@@ -115,55 +119,52 @@ export default {
         border: 1px solid black;
         background: rgb(253, 253, 253);
         outline:none;
-    
     }
 
     @media screen and (max-width: 1110px) {
-        div {
-                    margin: 10px 140px 0 140px;
-
+    div {
+        margin: 10px 140px 0 140px;
         }
     }
     @media screen and (max-width: 950px) {
         div {
-                    margin: 10px 120px 0 120px;
-
+            margin: 10px 120px 0 120px;
         }
     } 
 
-     @media screen and (max-width: 870px) {
+    @media screen and (max-width: 870px) {
         div {
-                    margin: 10px 100px 0 100px;
-                    min-width: 400px;
+            margin: 10px 100px 0 100px;
+            min-width: 400px;
         }
-     }
-     @media screen and (max-width: 800px) {
+    }
+    @media screen and (max-width: 800px) {
         div {
-                    margin: 10px 70px 0 70px;
-                    min-width: 400px;
+            margin: 10px 70px 0 70px;
+            min-width: 400px;
         }
-     }
+    }
 
-     @media screen and (max-width: 690px) {
+    @media screen and (max-width: 690px) {
         div {
-                    margin: 10px 40px 0 40px;
-                    min-width: 400px;
+            margin: 10px 40px 0 40px;
+            min-width: 400px;
         }
-     }
+    }
     @media screen and (max-width: 550px) {
-        div {
-            margin: 10px 50px 0 20px;
-            min-width: 400px;
-        }
+    div {
+        margin: 10px 50px 0 20px;
+        min-width: 400px;
+    }
 
-        .add {
-            min-width: 400px;
-            margin-left: 20px;
-            margin-right: 30px;
-        }
+    .add {
+        min-width: 400px;
+        margin-left: 20px;
+        margin-right: 30px;
+    }
 
-        .selectForm {
-            margin-left: 165px;
-        }
-    } 
+    .selectForm {
+        margin-left: 165px;
+    }
+}
 </style>
