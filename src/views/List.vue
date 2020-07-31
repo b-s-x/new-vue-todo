@@ -28,7 +28,7 @@ import { bus } from '../main'
 export default {
     data() {
         return {
-            // todos: [],
+            todos: [],
             loading: true,
             filter: 'all',
         }
