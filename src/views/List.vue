@@ -25,6 +25,7 @@ import AddItem from '@/components/AddItem'
 import Loader from '@/components/Loader'
 import { bus } from '../main'
 
+import { mapGetters } from 'vuex'
 export default {
     data() {
         return {
@@ -71,14 +72,14 @@ export default {
             deep: true
         }
     },
-    mounted() {
-        if(localStorage.getItem('todos')) {
-            setTimeout(() => {
-            this.todos = JSON.parse(localStorage.getItem('todos'))
-            this.loading = false
-            }, 1000)     
-        }
-    },
+    // mounted() {
+    //     if(localStorage.getItem('todos')) {
+    //         setTimeout(() => {
+    //         this.todos = JSON.parse(localStorage.getItem('todos'))
+    //         this.loading = false
+    //         }, 1000)     
+    //     }
+    // },
     created() {
         bus.$on('remove', (id) => {
             this.removeItem(id)
