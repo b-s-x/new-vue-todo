@@ -26,27 +26,11 @@ import Loader from '@/components/Loader'
 import { bus } from '../main'
 
 export default {
-     data() {
+    data() {
         return {
-            todos: [],
+            // todos: [],
             loading: true,
             filter: 'all',
-        }
-    },
-    mounted() {
-        if(localStorage.getItem('todos')) {
-            setTimeout(() => {
-            this.todos = JSON.parse(localStorage.getItem('todos'))
-            this.loading = false
-            }, 1000)     
-        }
-    },
-    watch: {
-        todos: {
-            handler() {
-                localStorage.setItem('todos', JSON.stringify(this.todos))
-            },
-            deep: true
         }
     },
     components: {
@@ -63,6 +47,38 @@ export default {
             this.todos.push(dataPart);
         }, 
     },
+    computed: {
+        filterItem() {
+            if(this.filter == 'all') {
+                return this.todos
+            }   
+            if(this.filter == 'completed') {
+                return this.todos.filter((elem) => elem.completed)
+            }
+            if(this.filter == 'not-completed') {
+                return this.todos.filter((elem) => !elem.completed)
+            }
+        },
+        allTodos() {
+            return this.$store.getters.allTodos
+        }
+    },
+    watch: {
+        todos: {
+            handler() {
+                localStorage.setItem('todos', JSON.stringify(this.todos))
+            },
+            deep: true
+        }
+    },
+    mounted() {
+        if(localStorage.getItem('todos')) {
+            setTimeout(() => {
+            this.todos = JSON.parse(localStorage.getItem('todos'))
+            this.loading = false
+            }, 1000)     
+        }
+    },
     created() {
         bus.$on('remove', (id) => {
             this.removeItem(id)
@@ -75,19 +91,6 @@ export default {
         bus.$off('remove');
         bus.$off('addItem');
     },
-    computed: {
-        filterItem() {
-            if(this.filter == 'all') {
-                return this.todos
-            }   
-            if(this.filter == 'completed') {
-                return this.todos.filter((elem) => elem.completed)
-            }
-            if(this.filter == 'not-completed') {
-                return this.todos.filter((elem) => !elem.completed)
-            }
-        }
-    }
 }
 </script>
 
