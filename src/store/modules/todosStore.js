@@ -14,6 +14,7 @@ const saveData = (state) => {
 
 const add = (state, dataPart) => {
     state.todos.push(dataPart)
+    saveData(state)
 };
 
 const changeLoading = (state) => {
@@ -25,9 +26,9 @@ export default {
         fetchTodos(ctx) {
             if(localStorage.getItem('todos')) {
                 setTimeout(() => {
-                const todos = JSON.parse(localStorage.getItem('todos'))
-                ctx.commit('changeLoading')
-                ctx.commit('updateTodos', todos)
+                    const todos = JSON.parse(localStorage.getItem('todos'))
+                    ctx.commit('changeLoading')
+                    ctx.commit('updateTodos', todos)
                 }, 1000)  
             }
         }
@@ -49,6 +50,6 @@ export default {
         },
         getLoading: (state) => {
             return state.loading
-        }
+        },
     },
 }

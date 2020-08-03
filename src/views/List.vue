@@ -34,25 +34,23 @@ export default {
         filter: 'all',
         }
     },
+
     components: {
         ListRender,
         ListAddItem,
         ListLoader,
     },
-    methods: {
-         ...mapActions(['fetchTodos']),
 
+    methods: {
         removeItem(id) {
             this.$store.commit('remove', id)
         },
         
         addItem(dataPart) {
             this.$store.commit('add', dataPart)
-            this.$store.commit('saveData')
         }, 
-        ...mapActions(['fetchTodos'])
-
     },
+
     computed: {
         filterItem() {
             if(this.filter == 'all') {
@@ -72,9 +70,11 @@ export default {
             return this.$store.getters.getLoading
         }
     },
+
     mounted() {
       this.$store.dispatch('fetchTodos')
     },
+
     created() {
         bus.$on('remove', (id) => {
             this.removeItem(id)
@@ -83,6 +83,7 @@ export default {
             this.addItem(dataPart)
         })
     },
+    
     beforeDestroy() {
         bus.$off('remove');
         bus.$off('addItem');
