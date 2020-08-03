@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import todosStore from './modules/todos'
+import todosStore from './modules/todosStore'
 
 Vue.use(Vuex)
 

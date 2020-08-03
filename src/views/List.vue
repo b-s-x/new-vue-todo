@@ -1,6 +1,6 @@
 <template>
     <div> 
-        <AddItem class='add'/>
+        <ListAddItem class='add'/>
 
         <select v-model="filter" class="selectForm">
             <option value='all'> All </option>
@@ -8,7 +8,7 @@
             <option value='not-completed'> Not Completed </option>
         </select>
 
-        <Loader class='loader' v-if="loading"/>
+        <ListLoader class='loader' v-if="getLoading"/>
 
         <ListRender
         v-else-if="filterItem.length"
@@ -21,63 +21,59 @@
 
 <script>
 import ListRender from '@/components/ListRender'
-import AddItem from '@/components/AddItem'
-import Loader from '@/components/Loader'
+import ListAddItem from '@/components/ListAddItem'
+import ListLoader from '@/components/ListLoader'
 import { bus } from '../main'
+
+import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
     data() {
         return {
-            todos: [],
-            loading: true,
-            filter: 'all',
+        filter: 'all',
         }
     },
     components: {
         ListRender,
-        AddItem,
-        Loader,
+        ListAddItem,
+        ListLoader,
     },
     methods: {
+         ...mapActions(['fetchTodos']),
+
         removeItem(id) {
-            this.todos = this.todos.filter((elem) => elem.id !== id)
+            this.$store.commit('remove', id)
         },
         
         addItem(dataPart) {
-            this.todos.push(dataPart);
+            this.$store.commit('add', dataPart)
+            this.$store.commit('saveData')
         }, 
+        ...mapActions(['fetchTodos'])
+
     },
     computed: {
         filterItem() {
             if(this.filter == 'all') {
-                return this.todos
+                return this.allTodos
             }   
             if(this.filter == 'completed') {
-                return this.todos.filter((elem) => elem.completed)
+                return this.allTodos.filter((elem) => elem.completed)
             }
             if(this.filter == 'not-completed') {
-                return this.todos.filter((elem) => !elem.completed)
+                return this.allTodos.filter((elem) => !elem.completed)
             }
         },
         allTodos() {
             return this.$store.getters.allTodos
-        }
-    },
-    watch: {
-        todos: {
-            handler() {
-                localStorage.setItem('todos', JSON.stringify(this.todos))
-            },
-            deep: true
+        },
+        getLoading() {
+            return this.$store.getters.getLoading
         }
     },
     mounted() {
-        if(localStorage.getItem('todos')) {
-            setTimeout(() => {
-            this.todos = JSON.parse(localStorage.getItem('todos'))
-            this.loading = false
-            }, 1000)     
-        }
+      this.$store.dispatch('fetchTodos')
     },
     created() {
         bus.$on('remove', (id) => {
