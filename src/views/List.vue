@@ -15,7 +15,8 @@
         :todos='filterItem'
         />
 
-        <p v-else class="nothing"> Nothing... </p>   
+        <p v-else class="nothing"> Nothing... </p>  
+         
     </div>
 </template>
 
@@ -24,9 +25,6 @@ import ListRender from '@/components/ListRender'
 import ListAddItem from '@/components/ListAddItem'
 import ListLoader from '@/components/ListLoader'
 import { bus } from '../main'
-
-import { mapActions } from 'vuex'
-import { mapState } from 'vuex'
 
 export default {
     data() {
