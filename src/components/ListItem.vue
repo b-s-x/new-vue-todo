@@ -1,15 +1,15 @@
 <template>
     <div>
         <span :class='{done: todo.completed}'>
-        <input type="checkbox" class="check"
-            @change='todo.completed = !todo.completed'>
+        <input type="checkbox" class="check" v-model="todo.completed"
+            @change='completed'>
             <strong> {{index + 1}} </strong>
             {{todo.title | uppercase}}
         </span>
         <button class="remove" 
                 @click="remove"
             > &times; 
-        </button> 
+        </button>  
     </div>
 </template>
 
@@ -27,6 +27,9 @@ export default {
     methods: {
         remove() {
             bus.$emit('remove', this.todo.id)
+        },
+        completed() {
+            this.$store.commit('saveData')
         }
     }
 }

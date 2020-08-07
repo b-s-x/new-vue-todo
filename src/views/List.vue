@@ -16,7 +16,7 @@
         />
 
         <p v-else class="nothing"> Nothing... </p>  
-         
+        
     </div>
 </template>
 
