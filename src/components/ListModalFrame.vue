@@ -1,18 +1,18 @@
 <template>
     <div class="modal-fade">
-        <div class="modal-backdrop">
+        <div class="modal-backdrop" ref='modal-backdrop'>
             <div class="modal"> 
                 <div class="modal-body">
                     <slot> </slot> 
 
                 <div>
                     <button class="accept"
-                        @click="buttonAccept"
-                    >  ok </button>
-
+                        @click="accept"
+                    > 
+                    yes </button>
                     <button class="decline"
-                        @click="buttonDecline"
-                    > &times; </button>
+                        @click="decline"
+                    > no </button>
                 </div>
                 </div>
             </div>
@@ -22,16 +22,24 @@
 
 <script>
 import { bus } from '../main'
+import correct from '@/assets/icons/correct.svg'
 
 export default {
     methods: {
-        buttonAccept() {
-            bus.$emit('accept')
+        accept() {
+            bus.$emit('accept', id)
         },
-        buttonDecline() {
+        decline() {
             bus.$emit('decline')
-        }
-    }
+        },
+    },
+    mounted() {
+      document.addEventListener('click', (item) => {
+          if(item.target === this.$refs['modal-backdrop']) {
+              this.decline()
+          }
+      })
+    },
 }
 </script>
 
@@ -57,34 +65,22 @@ export default {
         width: 300px;
         border-radius: 15px;
     }
-
+ 
     .modal-body {
         padding: 20px 10px;
         display: flex;
         flex-direction: row;
-        justify-content:space-around;
+        justify-content: space-around;
     }
     
-   .accept {
+   .accept, .decline {
         margin: 3px 5px;
         padding: 5px;
         background: white;
         border: 1px solid black;
         border-radius: 5px;
-    }
-
-    .decline {
-        
-    }
-
-    .modal-fade-enter,
-    .modal-fade-leave-active {
-        opacity: 0;
-    }
-
-  .modal-fade-enter-active,
-  .modal-fade-leave-active {
-        transition: opacity .5s ease
+        outline: none;
+        font-size: 15px
     }
 
 </style>

@@ -1,5 +1,12 @@
 <template>
     <div> 
+        <ListModalFrame class="modal_frame"
+        v-show="isVisible"
+        
+        > 
+             Are you sure? 
+        </ListModalFrame>
+
         <ListAddItem class='add'/>
 
         <select v-model="filter" class="selectForm">
@@ -25,24 +32,26 @@ import ListAddItem from '@/components/ListAddItem'
 import ListLoader from '@/components/ListLoader'
 import { bus } from '../main'
 
-import { mapActions } from 'vuex'
-import { mapState } from 'vuex'
+import ListModalFrame from '@/components/ListModalFrame'
+
 
 export default {
     data() {
         return {
             filter: 'all',
+            isVisible: false,
+            // id: ''
         }
     },
     components: {
         ListRender,
         ListAddItem,
         ListLoader,
+        ListModalFrame,
     },
     methods: {
-         ...mapActions(['fetchTodos']),
 
-        removeItem(id) {
+        removeItem() {
             this.$store.commit('remove', id)
         },
         
@@ -50,8 +59,10 @@ export default {
             this.$store.commit('add', dataPart)
             this.$store.commit('saveData')
         }, 
-        ...mapActions(['fetchTodos'])
 
+        closeModal() {
+            this.isVisible = false;
+        },
     },
     computed: {
         filterItem() {
@@ -73,14 +84,26 @@ export default {
         }
     },
     mounted() {
-      this.$store.dispatch('fetchTodos')
+      this.$store.dispatch('fetchTodos');
     },
     created() {
-        bus.$on('remove', (id) => {
-            this.removeItem(id)
-        }),
+        // bus.$on('remove', (id) => {
+        //     this.removeItem(id)
+        // }),
         bus.$on('addItem', (dataPart) => {
             this.addItem(dataPart)
+        })
+        bus.$on('accept', () => {
+            this.removeItem();
+            // this.id = ''
+            this.closeModal()
+        })
+        bus.$on('decline', () => {
+            this.closeModal()
+        })
+        bus.$on('isVisible', (id) => {
+            // this.id = id
+            this.isVisible = true
         })
     },
     beforeDestroy() {
@@ -119,6 +142,13 @@ export default {
         background: rgb(253, 253, 253);
         outline:none;
     }
+
+    .modal_frame {
+        font-size: 20px;
+        font-weight: bold; 
+    }
+   
+
 
     @media screen and (max-width: 1110px) {
     div {

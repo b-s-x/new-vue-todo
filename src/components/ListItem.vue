@@ -7,7 +7,7 @@
             {{todo.title | uppercase}}
         </span>
         <button class="remove" 
-                @click="remove"
+                @click='isVisible'
             > &times; 
         </button> 
     </div>
@@ -30,6 +30,9 @@ export default {
         },
         completed() {
             this.$store.commit('saveData')
+        },
+        isVisible() {
+            bus.$emit('isVisible', this.todo.id)
         }
     }
 }
