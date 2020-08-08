@@ -30,28 +30,27 @@
 import ListRender from '@/components/ListRender'
 import ListAddItem from '@/components/ListAddItem'
 import ListLoader from '@/components/ListLoader'
-import { bus } from '../main'
-
 import ListModalFrame from '@/components/ListModalFrame'
 
+import { bus } from '../main'
 
 export default {
     data() {
         return {
             filter: 'all',
             isVisible: false,
-            // id: ''
         }
     },
+
     components: {
         ListRender,
         ListAddItem,
         ListLoader,
         ListModalFrame,
     },
-    methods: {
 
-        removeItem() {
+    methods: {
+        removeItem(id) {
             this.$store.commit('remove', id)
         },
         
@@ -64,6 +63,7 @@ export default {
             this.isVisible = false;
         },
     },
+
     computed: {
         filterItem() {
             if(this.filter == 'all') {
@@ -83,32 +83,33 @@ export default {
             return this.$store.getters.getLoading
         }
     },
+
     mounted() {
       this.$store.dispatch('fetchTodos');
     },
+
     created() {
-        // bus.$on('remove', (id) => {
-        //     this.removeItem(id)
-        // }),
         bus.$on('addItem', (dataPart) => {
             this.addItem(dataPart)
         })
         bus.$on('accept', () => {
-            this.removeItem();
-            // this.id = ''
+            this.removeItem(this.id);
             this.closeModal()
         })
         bus.$on('decline', () => {
             this.closeModal()
         })
         bus.$on('isVisible', (id) => {
-            // this.id = id
-            this.isVisible = true
+            this.id = id
+            this.isVisible = true;
         })
     },
+
     beforeDestroy() {
-        bus.$off('remove');
         bus.$off('addItem');
+        bus.$off('accept');
+        bus.$off('decline');
+        bus.$off('isVisible');
     },
 }
 </script>
@@ -147,8 +148,6 @@ export default {
         font-size: 20px;
         font-weight: bold; 
     }
-   
-
 
     @media screen and (max-width: 1110px) {
     div {

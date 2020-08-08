@@ -22,12 +22,11 @@
 
 <script>
 import { bus } from '../main'
-import correct from '@/assets/icons/correct.svg'
 
 export default {
     methods: {
         accept() {
-            bus.$emit('accept', id)
+            bus.$emit('accept')
         },
         decline() {
             bus.$emit('decline')

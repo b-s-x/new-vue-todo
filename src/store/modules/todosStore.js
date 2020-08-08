@@ -22,12 +22,12 @@ const changeLoading = (state) => {
 
 export default {
     actions: {
-        fetchTodos(ctx) {
+        fetchTodos({commit}) {
             if(localStorage.getItem('todos')) {
                 setTimeout(() => {
                 const todos = JSON.parse(localStorage.getItem('todos'))
-                ctx.commit('changeLoading')
-                ctx.commit('updateTodos', todos)
+                commit('changeLoading')
+                commit('updateTodos', todos)
                 }, 1000)  
             }
         }
