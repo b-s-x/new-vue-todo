@@ -1,6 +1,6 @@
 
 const updateTodos = (state, todos) => {
-    state.todos = todos
+    state.todos = todos;
 };
 
 const remove = (state, id) => {
@@ -14,6 +14,7 @@ const saveData = (state) => {
 
 const add = (state, dataPart) => {
     state.todos.push(dataPart)
+    saveData(state)
 };
 
 const changeLoading = (state) => {
@@ -49,6 +50,6 @@ export default {
         },
         getLoading: (state) => {
             return state.loading
-        }
+        },
     },
 }

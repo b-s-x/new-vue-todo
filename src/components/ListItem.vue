@@ -9,7 +9,7 @@
         <button class="remove" 
                 @click='isVisible'
             > &times; 
-        </button> 
+        </button>  
     </div>
 </template>
 

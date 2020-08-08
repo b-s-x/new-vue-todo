@@ -22,7 +22,8 @@
         :todos='filterItem'
         />
 
-        <p v-else class="nothing"> Nothing... </p>   
+        <p v-else class="nothing"> Nothing... </p>  
+        
     </div>
 </template>
 
@@ -56,12 +57,12 @@ export default {
         
         addItem(dataPart) {
             this.$store.commit('add', dataPart)
-            this.$store.commit('saveData')
         }, 
 
         closeModal() {
             this.isVisible = false;
         },
+
     },
 
     computed: {
@@ -104,7 +105,7 @@ export default {
             this.isVisible = true;
         })
     },
-
+    
     beforeDestroy() {
         bus.$off('addItem');
         bus.$off('accept');
