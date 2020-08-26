@@ -1,32 +1,41 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <span class="linkDecor"> 
+			<router-link to="/home" class="linkHome"> Home</router-link>
+			<router-link to="/list" class="linkList"> List</router-link>
+		</span>
+
+		<router-view> </router-view>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+.linkDecor {
+		font-size: 42px;
+		margin: 10px;
+		padding: 10px;
+		display: flex;
+	}
 
-#nav {
-  padding: 30px;
+	.linkList, .linkHome {
+		padding: 20px;
+		margin: auto;
+		color: black;
+	}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+	@media screen and (max-width: 550px) {
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+		.linkDecor {
+			margin-left: 50px;
+			min-width: 420px;
+		}
+
+		.linkList, .linkHome {
+			padding: 20px;
+		}
+
+		.linkList {
+			margin-left: 70px;
+		}
+	}
 </style>
