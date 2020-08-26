@@ -1,15 +1,35 @@
 <template>
 	<div id="app">
-		<span class="linkDecor">
+		<!-- <span class="linkDecor">
 			<router-link to="/home" class="linkHome">Home</router-link>
 			<router-link to="/list" class="linkList">List</router-link>
-		</span>
-
+		</span> -->
+		<component :is="layout + '-layout'"> 
+		
+		</component>
 		<router-view></router-view>
+
 	</div>
 </template>
 
-<style lang="scss">
+<script>
+
+import MainLayout from '@/layout/mainLayout'
+import EmptyLayout from '@/layout/emptyLayout'
+
+export default {
+	components: {
+		MainLayout,
+		EmptyLayout
+	},
+	computed: {
+		layout() {
+			return (this.$route.meta.layout || 'empty')
+		}
+	}
+}
+</script>
+<style lang="scss" scoped>
 
 	.linkDecor {
 		font-size: 42px;

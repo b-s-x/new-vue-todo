@@ -8,14 +8,17 @@ export default new Router({
   routes: [
     {
       path: '/',
+      meta: { layout: 'main' },
       component: () => import('@/views/Question'),
     },
     {
       path: '/list',
+      meta: { layout: 'main' },
       component: () => import('@/views/List'),
     },
     {
       path: '/home',
+      meta: { layout: 'main' },
       component: () => import('@/views/Home'),
     },
   ]
