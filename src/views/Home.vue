@@ -12,20 +12,8 @@ export default {
 }
 </script>
 
-<style scoped>
-    .common {
-        display: flex;
-    }
+<style lang='scss' >
 
-    h1 { 
-        font-size: 70px;
-        margin: auto;
-        margin-top: 100px;
-    }
+    @import '@/styles/style/home.style.scss';
 
-    .home {
-        color: black;
-        text-decoration: none;
-    }
-    
 </style>

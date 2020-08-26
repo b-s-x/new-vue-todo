@@ -5,36 +5,8 @@
     </span>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
+	@import '@/styles/style/main.layout.style.scss';
+	@import '@/styles/media/main.layout.media.scss';
 
-	.linkDecor {
-		font-size: 42px;
-		margin: 10px;
-		padding: 10px;
-		display: flex;
-	}
-
-	.linkList,
-	.linkHome {
-		padding: 20px;
-		margin: auto;
-		color: black;
-	}
-
-@media screen and (max-width: 550px) {
-	
-	.linkDecor {
-		margin-left: 50px;
-		min-width: 420px;
-	}
-
-	.linkList,
-	.linkHome {
-		padding: 20px;
-	}
-
-	.linkList {
-		margin-left: 70px;
-	}
-}
 </style>

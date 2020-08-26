@@ -1,0 +1,60 @@
+div {
+    margin: 0 180px 0 180px;
+    @media (max-width: 1110px) {
+        margin: 0 140px 0 140px;
+
+        @media screen and (max-width: 1110px) {
+            div {
+                margin: 0 140px 0 140px;
+            }
+        }
+
+        @media screen and (max-width: 950px) {
+            div {
+                margin: 0 120px 0 120px;
+            }
+        } 
+
+        @media screen and (max-width: 870px) {
+            div {
+                margin: 0 100px 0 100px;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            div {
+                margin: 0 70px 0 70px;
+            }
+        }
+
+        @media screen and (max-width: 690px) {
+            div {
+                    margin: 0 40px 0 40px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            div {
+                margin: 0 50px 0 50px;
+            }
+
+            .loader {
+                margin: 60px 170px
+            }
+
+            .add {
+                min-width: 400px;
+                margin-left: 20px;
+                margin-right: 30px;
+            }
+
+            .render {
+                min-width: 340px;
+            }
+
+            .selectForm {
+                margin-left: 165px;
+            }
+        }
+    }
+}

@@ -10,14 +10,8 @@ export default {
 }
 </script>
 
-<style scoped>
-    .homeStyle {
-        display: flex;
-    }
+<style lang='scss'>
 
-    p { 
-        font-size: 65px;
-        margin: auto;
-        margin-top: 120px;
-    }
+    @import '@/styles/style/question.style.scss';
+
 </style>
