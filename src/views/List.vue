@@ -3,7 +3,7 @@
         <list-transition>
             <ListModalFrame class="modal_frame"
                 v-show="isVisible"> 
-                Are you sure? 
+                    Are you sure? 
             </ListModalFrame>
         </list-transition>
 
@@ -41,6 +41,7 @@ export default {
         return {
             filter: 'all',
             isVisible: false,
+            id: '',
         }
     },
 
