@@ -122,7 +122,7 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style lang='scss' scoped>
 
     div {
         margin: 0 180px 0 180px;
