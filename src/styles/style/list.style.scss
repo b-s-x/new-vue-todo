@@ -1,5 +1,4 @@
 div {
-    margin: 0 180px 0 180px;
     display: flex; 
     flex-direction: column;
 }
@@ -23,7 +22,7 @@ div {
     border-radius: 15px;
     border: 1px solid black;
     background: rgb(253, 253, 253);
-    outline:none;
+    outline: none;
 }
 
 .modal_frame {

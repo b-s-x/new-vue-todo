@@ -26,6 +26,7 @@ export default {
         margin: 7px;
         padding: 10px;
         display: flex;
-        justify-content: space-between
+        justify-content: space-between;
+        min-width: 300px;
     }
 </style>

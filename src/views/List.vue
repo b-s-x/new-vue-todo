@@ -128,4 +128,10 @@ export default {
     @import '@/styles/media/list.media.scss';
     @import '@/styles/style/list.style.scss';
     
+    .selectForm {
+        @media (max-width: 600px) {
+            margin: 50 200px;
+            margin-left: 210px;
+        }
+    }
 </style>

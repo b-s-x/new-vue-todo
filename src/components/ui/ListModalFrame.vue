@@ -43,15 +43,18 @@ export default {
 <style scoped>
 
     .modal-backdrop {
-        position:absolute;
-        top: 0px;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
         bottom: 0;
-        left: -180px;
-        right: -180px;
-        background-color: rgba(0, 0, 0, 0.2);
+        left: 0px;
+        right: 0px;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 100;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; 
     }
 
     .modal {
