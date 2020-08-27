@@ -1,15 +1,23 @@
 <template>
     <div>
-        <span :class='{done: todo.completed}'>
-        <input type="checkbox" class="check" v-model="todo.completed"
-            @change='completed'>
-            <strong> {{index + 1}} </strong>
-            {{todo.title | uppercase}}
-        </span>
-        <button class="remove" 
-                @click='isVisible'
-            > &times; 
-        </button>  
+        <div class="item">
+            
+            <span :class='{done: todo.completed}' class="span">
+                <input type="checkbox" class="check" v-model="todo.completed"
+                @change='completed'>
+                
+                <div class="text-area">
+                    <strong> {{index + 1}} </strong>
+                    {{todo.title | uppercase}}
+                </div>
+            </span>
+
+            <button class="remove" 
+                @click='isVisible'> 
+                    <img class='delete-icon' src='@/assets/icons/delete.svg'>
+            </button>  
+
+        </div>
     </div>
 </template>
 
@@ -41,15 +49,32 @@ export default {
 <style scoped>
 
     .remove {
-        color: white;
-        background: black;
+        background: white;
         border: none;
-        border-radius: 50%;
         outline: none;
     }
 
     .done {
         text-decoration: line-through;
     }
-    
+
+    .item {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2px;
+    }
+
+    .check {
+        margin-top: 6px;
+    }
+
+    .span {
+        display: flex;
+    }
+
+    .text-area {
+        margin: 3px 5px;
+
+    }
+
 </style>

@@ -24,9 +24,7 @@ export default {
         border: black 1px solid;
         border-radius: 15px;
         margin: 7px;
-        padding: 10px;
-        display: flex;
-        justify-content: space-between;
+        padding: 8px;
         min-width: 300px;
     }
 </style>
