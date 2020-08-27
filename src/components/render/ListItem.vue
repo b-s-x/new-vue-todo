@@ -2,14 +2,26 @@
     <div>
         <div class="item">
             
-            <span :class='{done: todo.completed}' class="span">
-                <input type="checkbox" class="check" v-model="todo.completed"
-                @change='completed'>
+            <!-- <div class="checkbox">
+                <input type="checkbox" id="checks">
+                <label for="checks">
+                    Выбери меня
+                </label>
+            </div> -->
+
+            <span :class='{done: todo.completed}' class="input-area">
+                <input type="checkbox" 
+                    class="input-checkbox"
+                    v-model="todo.completed"
+                    id='checked'
+                    @change='completed'>
                 
-                <div class="text-area">
-                    <strong> {{index + 1}} </strong>
-                    {{todo.title | uppercase}}
-                </div>
+                <label for='checked' class="label">
+                    <div class="text-area">
+                        <strong> {{index + 1}} </strong>
+                        {{todo.title | uppercase}}
+                    </div>
+                </label>
             </span>
 
             <button class="remove" 
@@ -46,6 +58,7 @@ export default {
         },
         completed() {
             this.$store.commit('saveData')
+
         },
         isVisible() {
             bus.$emit('isVisible', this.todo.id)
@@ -72,11 +85,11 @@ export default {
         margin-top: 2px;
     }
 
-    .check {
+    .input-checkbox {
         margin-top: 6px;
     }
 
-    .span {
+    .input-area {
         display: flex;
     }
 
@@ -88,5 +101,54 @@ export default {
     .delete-icon {
         fill: black;
     }
+
+    
+
+
+
+
+.input-area {
+    position:relative;
+	padding-left:25px;
+}
+
+.input-area input[type=checkbox] {
+	display:none;
+}
+
+.label::after {
+	display:block;
+	height:14px;
+	width:14px;
+	outline:1px solid #939598;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.label::before {
+    content: '';
+    color: transparent;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    padding-right: 1px;
+    border-radius: 4px;
+    transition: 0.2s;
+    background: white;
+    border: 2px solid black;
+    overflow: hidden;
+    left: 0;
+    box-sizing: inherit;
+
+}
+
+.input-checkbox:checked + .label:before {
+    content: url('./../../assets/IconCheck.svg');
+    
+    transition: 0.2s;
+}
+
+
 
 </style>
