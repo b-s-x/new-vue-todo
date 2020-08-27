@@ -14,7 +14,7 @@
 
             <button class="remove" 
                 @click='isVisible'> 
-                    <img class='delete-icon' src='@/assets/icons/delete.svg'>
+                    <icon-delete />
             </button>  
 
         </div>
@@ -23,15 +23,23 @@
 
 <script>
 
+import IconDelete from '@/components/icons/IconDelete'
 import { bus } from '../../main.js'
 
 export default {
+
     props: ['todo', 'index'],
+
+    components: {
+        IconDelete,
+    },
+
     filters: {
         uppercase(value) {
             return value.toUpperCase()
         }
     },
+
     methods: {
         remove() {
             bus.$emit('remove', this.todo.id)
@@ -46,7 +54,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
 
     .remove {
         background: white;
@@ -75,6 +83,10 @@ export default {
     .text-area {
         margin: 3px 5px;
 
+    }
+
+    .delete-icon {
+        fill: black;
     }
 
 </style>

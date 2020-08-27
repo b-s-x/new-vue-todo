@@ -20,6 +20,7 @@ export default {
 </script>
 
 <style scoped>
+
     .listItem {
         border: black 1px solid;
         border-radius: 15px;
@@ -27,4 +28,5 @@ export default {
         padding: 8px;
         min-width: 300px;
     }
+    
 </style>
