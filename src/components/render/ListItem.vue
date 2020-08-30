@@ -1,31 +1,27 @@
 <template>
     <div>
         <div class="item">
-            
-            <!-- <div class="checkbox">
-                <input type="checkbox" id="checks">
-                <label for="checks">
-                    Выбери меня
-                </label>
-            </div> -->
-
-            <span :class='{done: todo.completed}' class="input-area">
+        
+            <span :class="{done: todo.completed}" class="input-area">
                 <input type="checkbox" 
                     class="input-checkbox"
-                    v-model="todo.completed"
-                    id='checked'
-                    @change='completed'>
+                    v-model="todo.completed" 
+                    :id="todoId"
+                    @change="completed"
+                >
                 
-                <label for='checked' class="label">
+                <label :for="todoId" class="label" 
+                @change="completed"
+                >
                     <div class="text-area">
-                        <strong> {{index + 1}} </strong>
+                        <strong> {{index + 1}}. </strong>
                         {{todo.title | uppercase}}
                     </div>
                 </label>
             </span>
 
             <button class="remove" 
-                @click='isVisible'> 
+                @click="isVisible"> 
                     <icon-delete />
             </button>  
 
@@ -35,15 +31,21 @@
 
 <script>
 
-import IconDelete from '@/components/icons/IconDelete'
-import { bus } from '../../main.js'
+import IconDelete from "@/components/icons/IconDelete"
+import { bus } from "../../main.js"
 
 export default {
 
-    props: ['todo', 'index'],
+    props: ["todo", "index"],
 
     components: {
         IconDelete,
+    },
+    
+    computed: {
+        todoId() {
+            return this.todo.id
+        }
     },
 
     filters: {
@@ -54,20 +56,21 @@ export default {
 
     methods: {
         remove() {
-            bus.$emit('remove', this.todo.id)
+            bus.$emit("remove", this.todo.id)
         },
-        completed() {
-            this.$store.commit('saveData')
 
+        completed() {
+            this.$store.commit("saveData")
         },
+        
         isVisible() {
-            bus.$emit('isVisible', this.todo.id)
+            bus.$emit("isVisible", this.todo.id)
         }
     }
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 
     .remove {
         background: white;
@@ -102,53 +105,38 @@ export default {
         fill: black;
     }
 
-    
+    .label {
+        margin-left: 7px;
+    }
+
+    .text-area > strong {
+        margin-right: 7px;
+    }
 
 
 
+    .input-area {
+        position:relative;
+        padding-left: 23px;
+    }
 
-.input-area {
-    position:relative;
-	padding-left:25px;
-}
+    .input-checkbox {
+        display:none;
+        position: relative;
+    }
 
-.input-area input[type=checkbox] {
-	display:none;
-}
+    .label::before {
+        content: "";
+        position: absolute;
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        border: 1px solid black;
+        left: 0;  
+    }
 
-.label::after {
-	display:block;
-	height:14px;
-	width:14px;
-	outline:1px solid #939598;
-	position:absolute;
-	top:0;
-	left:0;
-}
-
-.label::before {
-    content: '';
-    color: transparent;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    padding-right: 1px;
-    border-radius: 4px;
-    transition: 0.2s;
-    background: white;
-    border: 2px solid black;
-    overflow: hidden;
-    left: 0;
-    box-sizing: inherit;
-
-}
-
-.input-checkbox:checked + .label:before {
-    content: url('./../../assets/IconCheck.svg');
-    
-    transition: 0.2s;
-}
-
-
+    .input-checkbox:checked + .label::before {
+        content: url("./../../assets/IconCheck.svg"); 
+    }
 
 </style>
