@@ -128,11 +128,12 @@ export default {
     .label::before {
         content: "";
         position: absolute;
-        width: 19px;
-        height: 19px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         border: 1px solid black;
-        left: 0;  
+        left: 0; 
+        top: 1px; 
     }
 
     .input-checkbox:checked + .label::before {
