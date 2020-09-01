@@ -1,7 +1,10 @@
 div {
     display: flex; 
     flex-direction: column;
+    margin: 0 auto;
+    min-width: 500px;
 }
+
 
 .nothing {
     font-size: 45px;

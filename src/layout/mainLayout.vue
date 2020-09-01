@@ -7,6 +7,5 @@
 
 <style lang="scss">
 	@import '@/styles/style/main.layout.style.scss';
-	@import '@/styles/media/main.layout.media.scss';
 
 </style>
