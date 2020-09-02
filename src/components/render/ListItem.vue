@@ -121,23 +121,38 @@ export default {
     }
 
     .input-checkbox {
-        display:none;
         position: relative;
+        z-index: -1;
+        opacity: 0;
     }
 
     .label::before {
         content: "";
         position: absolute;
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
-        border: 1px solid black;
+        border: 1px solid grey;
         left: 0;
-        top: 1px;
+        top: 2px;
     }
 
     .input-checkbox:checked + .label::before {
         content: url("./../../assets/IconCheck.svg");
+        border: none;
+    }
+
+    .input-checkbox:not(:disabled):not(:checked) + .label:hover::before {
+        border-color: black;
+    }
+
+    .input-checkbox:not(:disabled):active + label::before {
+        background-color:black;
+        border-color: black;
+    }
+
+    .input-checkbox:focus + label::before {
+      box-shadow: 0 0 0 0.2rem rgba(105, 106, 107, 0.25);
     }
 
 </style>
