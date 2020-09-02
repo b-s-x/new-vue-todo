@@ -1,6 +1,6 @@
 <template>
-    <div class="common"> 
-        <h1>  
+    <div class="common">
+        <h1>
            <router-link class="home" to="/"> I am at Home! </router-link>
         </h1>
     </div>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    
+
 }
 </script>
 

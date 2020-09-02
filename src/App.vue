@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
-		<component :is="layout + '-layout'"> 
-		
+		<component :is="layout + '-layout'">
+
 		</component>
 		<router-view/>
 
@@ -10,8 +10,8 @@
 
 <script>
 
-import MainLayout from '@/layout/mainLayout'
-import EmptyLayout from '@/layout/emptyLayout'
+import MainLayout from "@/layout/mainLayout"
+import EmptyLayout from "@/layout/emptyLayout"
 
 export default {
 	components: {
@@ -20,7 +20,7 @@ export default {
 	},
 	computed: {
 		layout() {
-			return (this.$route.meta.layout || 'empty')
+			return (this.$route.meta.layout || "empty")
 		}
 	}
 }

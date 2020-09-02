@@ -29,7 +29,7 @@ export default {
                 const todos = JSON.parse(localStorage.getItem("todos"))
                 commit("changeLoading")
                 commit("updateTodos", todos)
-                }, 1000)  
+                }, 1000)
             }
         }
     },

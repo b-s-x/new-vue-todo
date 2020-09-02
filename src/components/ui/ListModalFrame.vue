@@ -1,8 +1,8 @@
 <template>
     <div class="modal-backdrop" ref="modal-backdrop">
-        <div class="modal"> 
+        <div class="modal">
             <div class="modal-body">
-                <slot> </slot> 
+                <slot> </slot>
                 <div>
                     <button class="accept"
                         @click="accept"
@@ -54,7 +54,7 @@ export default {
         z-index: 100;
         display: flex;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
     }
 
     .modal {
@@ -65,14 +65,14 @@ export default {
         width: 300px;
         border-radius: 15px;
     }
- 
+
     .modal-body {
         padding: 20px 10px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
     }
-    
+
    .accept, .decline {
         margin: 3px 5px;
         padding: 5px;

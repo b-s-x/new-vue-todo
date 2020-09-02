@@ -1,9 +1,9 @@
 <template>
-    <div> 
+    <div>
         <list-transition>
             <ListModalFrame class="modal_frame"
-                v-show="isVisible"> 
-                    Are you sure? 
+                v-show="isVisible">
+                    Are you sure?
             </ListModalFrame>
         </list-transition>
 
@@ -22,8 +22,8 @@
             :todos="filterItem"
         />
 
-        <p v-else class="nothing"> Nothing... </p>  
-        
+        <p v-else class="nothing"> Nothing... </p>
+
     </div>
 </template>
 
@@ -40,7 +40,7 @@ import { bus } from "../main.js"
 const removeItem = function(id) {
     this.$store.commit("remove", id)
 };
-        
+
 const addItem = function(dataPart) {
     this.$store.commit("add", dataPart)
 };
@@ -77,7 +77,7 @@ export default {
         filterItem() {
             if(this.filter == "all") {
                 return this.allTodos
-            }   
+            }
             if(this.filter == "completed") {
                 return this.allTodos.filter((elem) => elem.completed)
             }
@@ -112,13 +112,13 @@ export default {
         bus.$on("decline", () => {
             this.closeModal()
         })
-        
+
         bus.$on("isVisible", (id) => {
             this.id = id
             this.isVisible = true;
         })
     },
-    
+
     beforeDestroy() {
         bus.$off("addItem");
         bus.$off("accept");
@@ -132,5 +132,5 @@ export default {
 <style lang="scss" scoped>
 
     @import "@/styles/style/list.style.scss";
-    
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div> 
+    <div>
         <ListItem class="listItem"
             v-for="(todo, index) of todos" :key="todo.id"
             :todo="todo"
@@ -28,5 +28,5 @@ export default {
         padding: 8px;
         min-width: 300px;
     }
-    
+
 </style>

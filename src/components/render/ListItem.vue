@@ -1,16 +1,16 @@
 <template>
     <div>
         <div class="item">
-        
+
             <span :class="{done: todo.completed}" class="input-area">
-                <input type="checkbox" 
+                <input type="checkbox"
                     class="input-checkbox"
-                    v-model="todo.completed" 
+                    v-model="todo.completed"
                     :id="todoId"
                     @change="completed"
                 >
-                
-                <label :for="todoId" class="label" 
+
+                <label :for="todoId" class="label"
                 @change="completed"
                 >
                     <div class="text-area">
@@ -20,10 +20,10 @@
                 </label>
             </span>
 
-            <button class="remove" 
-                @click="isVisible"> 
+            <button class="remove"
+                @click="isVisible">
                     <icon-delete />
-            </button>  
+            </button>
 
         </div>
     </div>
@@ -41,7 +41,7 @@ export default {
     components: {
         IconDelete,
     },
-    
+
     computed: {
         todoId() {
             return this.todo.id
@@ -62,7 +62,7 @@ export default {
         completed() {
             this.$store.commit("saveData")
         },
-        
+
         isVisible() {
             bus.$emit("isVisible", this.todo.id)
         }
@@ -132,12 +132,12 @@ export default {
         height: 18px;
         border-radius: 50%;
         border: 1px solid black;
-        left: 0; 
-        top: 1px; 
+        left: 0;
+        top: 1px;
     }
 
     .input-checkbox:checked + .label::before {
-        content: url("./../../assets/IconCheck.svg"); 
+        content: url("./../../assets/IconCheck.svg");
     }
 
 </style>
