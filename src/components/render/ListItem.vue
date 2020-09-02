@@ -142,16 +142,15 @@ export default {
         border: none;
     }
 
-    .input-checkbox:not(:disabled):not(:checked) + .label:hover::before {
+    .input-checkbox + .label:hover::before {
         border-color: black;
     }
 
-    .input-checkbox:not(:disabled):active + label::before {
-        background-color:black;
-        border-color: black;
+    .input-checkbox:active + .label::before {
+        background-color: black;
     }
 
-    .input-checkbox:focus + label::before {
+    .input-checkbox:focus + .label::before {
       box-shadow: 0 0 0 0.2rem rgba(105, 106, 107, 0.25);
     }
 
