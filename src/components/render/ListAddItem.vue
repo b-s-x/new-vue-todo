@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent='onSubmit'>
+    <form @submit.prevent="onSubmit">
         <input class="inputArea"
             v-model="title"
         >
@@ -8,12 +8,12 @@
 
 <script>
 
-import { bus } from '../../main.js'
+import { bus } from "../../main.js"
 
 export default {
    data() {
        return {
-           title: ''
+           title: "",
        }
    },
    methods: {
@@ -25,8 +25,8 @@ export default {
                    completed: false,
                }
 
-               bus.$emit('addItem', newItem);
-               this.title = ''
+               bus.$emit("addItem", newItem);
+               this.title = ""
            }
        }
    }

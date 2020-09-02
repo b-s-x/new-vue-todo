@@ -1,5 +1,5 @@
 <template>
-    <div class="modal-backdrop" ref='modal-backdrop'>
+    <div class="modal-backdrop" ref="modal-backdrop">
         <div class="modal"> 
             <div class="modal-body">
                 <slot> </slot> 
@@ -18,21 +18,21 @@
 
 <script>
 
-import { bus } from '../../main.js'
+import { bus } from "../../main.js"
 
 export default {
     methods: {
         accept() {
-            bus.$emit('accept')
+            bus.$emit("accept")
         },
         decline() {
-            bus.$emit('decline')
+            bus.$emit("decline")
         },
     },
 
     mounted() {
-        document.addEventListener('click', (item) => {
-            if(item.target === this.$refs['modal-backdrop']) {
+        document.addEventListener("click", (item) => {
+            if(item.target === this.$refs["modal-backdrop"]) {
                 this.decline()
             }
         })

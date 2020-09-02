@@ -6,6 +6,6 @@
 </template>
 
 <style lang="scss">
-	@import '@/styles/style/main.layout.style.scss';
+	@import "@/styles/style/main.layout.style.scss";
 
 </style>

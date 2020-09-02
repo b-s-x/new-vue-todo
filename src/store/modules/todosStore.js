@@ -9,7 +9,7 @@ const remove = (state, id) => {
 };
 
 const saveData = (state) => {
-    localStorage.setItem('todos', JSON.stringify(state.todos))
+    localStorage.setItem("todos", JSON.stringify(state.todos))
 };
 
 const add = (state, dataPart) => {
@@ -24,11 +24,11 @@ const changeLoading = (state) => {
 export default {
     actions: {
         fetchTodos({commit}) {
-            if(localStorage.getItem('todos')) {
+            if(localStorage.getItem("todos")) {
                 setTimeout(() => {
-                const todos = JSON.parse(localStorage.getItem('todos'))
-                commit('changeLoading')
-                commit('updateTodos', todos)
+                const todos = JSON.parse(localStorage.getItem("todos"))
+                commit("changeLoading")
+                commit("updateTodos", todos)
                 }, 1000)  
             }
         }

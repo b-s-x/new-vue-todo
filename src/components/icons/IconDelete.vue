@@ -1,5 +1,5 @@
 <template>
-    <svg class='delete-icon'
+    <svg class="delete-icon"
         height="20px" viewBox="0 0 512 512" width="20px" xmlns="http://www.w3.org/2000/svg">
         
         <path d="m256 0c-141.164062 0-256 114.835938-256 

@@ -1,18 +1,18 @@
 <template>
     <div> 
         <ListItem class="listItem"
-            v-for='(todo, index) of todos' :key='todo.id'
-            :todo='todo'
-            :index='index'
+            v-for="(todo, index) of todos" :key="todo.id"
+            :todo="todo"
+            :index="index"
         />
     </div>
 </template>
 
 <script>
-import ListItem from '@/components/render/ListItem'
+import ListItem from "@/components/render/ListItem"
 
 export default {
-    props: ['todos'],
+    props: ["todos"],
     components: {
         ListItem,
     },
