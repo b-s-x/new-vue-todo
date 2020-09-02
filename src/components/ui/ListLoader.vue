@@ -6,11 +6,15 @@
 
 <script>
 export default {
-    
+     
 }
 </script>
 
 <style>
+
+	div {
+		margin: 0 auto;
+	}
 
 	.lds-ripple {
 		position: relative;
