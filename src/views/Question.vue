@@ -10,8 +10,8 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 
-    @import '@/styles/style/question.style.scss';
+    @import "@/styles/style/question.style.scss";
 
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="common"> 
         <h1>  
-           <router-link class="home" to='/'> I am at Home! </router-link>
+           <router-link class="home" to="/"> I am at Home! </router-link>
         </h1>
     </div>
 </template>
@@ -12,8 +12,8 @@ export default {
 }
 </script>
 
-<style lang='scss' >
+<style lang="scss" >
 
-    @import '@/styles/style/home.style.scss';
+    @import "@/styles/style/home.style.scss";
 
 </style>
